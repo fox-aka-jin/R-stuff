@@ -1,0 +1,67 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+4/27/19
+
+Hoping to make up for lost time from last week this week. If I work on R a little bit each day, I should be able to learn quite a bit!
+
+I'm working here in R Markdown/Notebook mode, as I read somewhere it's a good practice to do so.
+
+Today, I'll be working on the 3rd Handout from my STA 100 course. It will be using the built-in dataset *cars*.
+
+QQ-PLOT OR NORMAL PROBABILITY PLOT
+```{r}
+# QQ-Plot, aka Normal Probability Plot
+  #checks normality of data distribution
+  #normality = a method to determine outliers, skewness, etc.
+
+class(cars)
+View(cars)
+#remember: it is a good practice to start by looking at the class of the data, as well as at the data itself.
+  #we see that the class is "dataframe."
+
+qqnorm(cars$speed, main = "Normality Plot for Car Speed")
+qqline(cars$speed) #<-- gives us the line itself
+
+```
+
+
+CALCULATING PROPORTIONS OF DATA BETWEEN 1, 2, or 3 STANDARD DEVIATIONS FROM THE MEAN
+```{r}
+#we will be making and saving info about our data
+#our dataset is "cars," and we can look at stuff like sd and mean
+
+X = cars$speed
+the_mean = mean(X)
+the_sd = sd(X)
+within_one_sd = mean(X < the_mean + the_sd & X > the_mean - the_sd)
+within_one_sd
+
+#the above is what the worksheet wants me to do, though I wonder if I can get R to print out just *one* of the sd values:
+the_mean + the_sd
+#okay, that works. Could I get a coordinate of two values, then?
+one_sd_away = c(the_mean + the_sd, the_mean - the_sd)
+one_sd_away
+#cool, so the above code DOES give me two values for SD. so then, what if...
+another_way_within_one_sd = mean(X < one_sd_away[1] & X > one_sd_away[2])
+another_way_within_one_sd
+
+#in hindsight, I think this process was less efficient in terms of how much I had to type, but it's neat that I figured out that I didn't forget too much in the time I didn't code.
+
+#as the worksheet implies, of course, we can easily calculate how much of our data is within 2 standard dev's
+within_two_sd = mean(X < the_mean + 2*the_sd & X > the_mean - 2*the_sd)
+within_two_sd
+
+
+```
+
+
+
+
+
+
+
+
+

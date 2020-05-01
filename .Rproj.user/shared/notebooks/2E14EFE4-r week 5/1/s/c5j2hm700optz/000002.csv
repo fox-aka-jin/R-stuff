@@ -1,0 +1,4 @@
+"0","#the data we'll be working with:"
+"0","nonsmokers = c(18,22,21,17,20,17,23,20,22,21)"
+"0","smokers = c(16,20,14,21,20,18,13,15,17,21)"
+"0","smoke = data.frame(score = c(nonsmokers,smokers),group = rep(c(""Non-Smoke"",""Smoke""),times = c(length(nonsmokers),length(smokers))) )"

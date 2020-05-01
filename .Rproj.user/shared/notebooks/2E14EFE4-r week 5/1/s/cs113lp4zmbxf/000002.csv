@@ -1,0 +1,14 @@
+"0","```r
+# QQ-Plot, aka Normal Probability Plot
+  #checks normality of data distribution
+  #normality = a method to determine outliers, skewness, etc.
+
+class(cars)
+View(cars)
+#remember: it is a good practice to start by looking at the class of the data, as well as at the data itself.
+  #we see that the class is \"dataframe.\"
+
+qqnorm(cars$speed, main = \"Normality Plot for Car Speed\")
+qqline(cars$speed) #<-- gives us the line itself
+
+```"

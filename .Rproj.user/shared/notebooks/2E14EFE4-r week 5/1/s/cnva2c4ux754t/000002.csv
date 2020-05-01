@@ -1,0 +1,44 @@
+"0","```r
+#we will be making and saving info about our data
+#our dataset is \"cars,\" and we can look at stuff like sd and mean
+X = cars$speed
+the_mean = mean(X)
+the_sd = sd(X)
+within_one_sd = mean(X < the_mean + the_sd & X > the_mean - the_sd)
+within_one_sd
+```"
+"1","[1] 0.68
+"
+"0","```r
+#the above is what the worksheet wants me to do, though I wonder if I can get R to print out just *one* of the sd values:
+the_mean + the_sd
+```"
+"1","[1] 20.68764
+"
+"0","```r
+#okay, that works. Could I get a coordinate of two values, then?
+one_sd_away = c(the_mean + the_sd, the_mean - the_sd)
+one_sd_away
+```"
+"1","[1] 20.68764 10.11236
+"
+"0","```r
+#cool, so the above code DOES give me two values for SD. so then, what if...
+another_way_within_one_sd = mean(X < one_sd_away[1] & X > one_sd_away[2])
+another_way_within_one_sd
+```"
+"1","[1] 0.68
+"
+"0","```r
+#in hindsight, I think this process was less efficient in terms of how much I had to type, but it's neat that I figured out that I didn't forget too much in the time I didn't code.
+#as the worksheet implies, of course, we can easily calculate how much of our data is within 2 standard dev's
+within_two_sd = mean(X < the_mean + 2*the_sd & X > the_mean - 2*the_sd)
+within_two_sd
+```"
+"1","[1] 0.96
+"
+"0","```r
+echo \"# learningR\" >> README.md
+```"
+"1","Error: unexpected string constant in \"echo \"# learningR\"\"
+"

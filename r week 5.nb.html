@@ -183,80 +183,213 @@ $(document).ready(function () {
 <p>QQ-PLOT OR NORMAL PROBABILITY PLOT</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBRUS1QbG90LCBha2EgTm9ybWFsIFByb2JhYmlsaXR5IFBsb3RcbiAgI2NoZWNrcyBub3JtYWxpdHkgb2YgZGF0YSBkaXN0cmlidXRpb25cbiAgI25vcm1hbGl0eSA9IGEgbWV0aG9kIHRvIGRldGVybWluZSBvdXRsaWVycywgc2tld25lc3MsIGV0Yy5cblxuY2xhc3MoY2FycylcblZpZXcoY2FycylcbiNyZW1lbWJlcjogaXQgaXMgYSBnb29kIHByYWN0aWNlIHRvIHN0YXJ0IGJ5IGxvb2tpbmcgYXQgdGhlIGNsYXNzIG9mIHRoZSBkYXRhLCBhcyB3ZWxsIGFzIGF0IHRoZSBkYXRhIGl0c2VsZi5cbiAgI3dlIHNlZSB0aGF0IHRoZSBjbGFzcyBpcyBcImRhdGFmcmFtZS5cIlxuXG5xcW5vcm0oY2FycyRzcGVlZCwgbWFpbiA9IFwiTm9ybWFsaXR5IFBsb3QgZm9yIENhciBTcGVlZFwiKVxucXFsaW5lKGNhcnMkc3BlZWQpICM8LS0gZ2l2ZXMgdXMgdGhlIGxpbmUgaXRzZWxmXG5cbmBgYCJ9 -->
-<pre class="r"><code># QQ-Plot, aka Normal Probability Plot
-  #checks normality of data distribution
-  #normality = a method to determine outliers, skewness, etc.
-
-class(cars)
-View(cars)
-#remember: it is a good practice to start by looking at the class of the data, as well as at the data itself.
-  #we see that the class is &quot;dataframe.&quot;
-
-qqnorm(cars$speed, main = &quot;Normality Plot for Car Speed&quot;)
-qqline(cars$speed) #&lt;-- gives us the line itself
-</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuIyBRUS1QbG90LCBha2EgTm9ybWFsIFByb2JhYmlsaXR5IFBsb3RcbiAgI2NoZWNrcyBub3JtYWxpdHkgb2YgZGF0YSBkaXN0cmlidXRpb25cbiAgI25vcm1hbGl0eSA9IGEgbWV0aG9kIHRvIGRldGVybWluZSBvdXRsaWVycywgc2tld25lc3MsIGV0Yy5cblxuY2xhc3MoY2FycylcblZpZXcoY2FycylcbiNyZW1lbWJlcjogaXQgaXMgYSBnb29kIHByYWN0aWNlIHRvIHN0YXJ0IGJ5IGxvb2tpbmcgYXQgdGhlIGNsYXNzIG9mIHRoZSBkYXRhLCBhcyB3ZWxsIGFzIGF0IHRoZSBkYXRhIGl0c2VsZi5cbiAgI3dlIHNlZSB0aGF0IHRoZSBjbGFzcyBpcyBcXGRhdGFmcmFtZS5cXFxuXG5xcW5vcm0oY2FycyRzcGVlZCwgbWFpbiA9IFxcTm9ybWFsaXR5IFBsb3QgZm9yIENhciBTcGVlZFxcKVxucXFsaW5lKGNhcnMkc3BlZWQpICM8LS0gZ2l2ZXMgdXMgdGhlIGxpbmUgaXRzZWxmXG5cbmBgYFxuYGBgIn0= -->
+<p><code>r</code>r # QQ-Plot, aka Normal Probability Plot #checks normality of data distribution #normality = a method to determine outliers, skewness, etc.</p>
+<p>class(cars) View(cars) #remember: it is a good practice to start by looking at the class of the data, as well as at the data itself. #we see that the class is .<br />
+qqnorm(cars<span class="math inline">\(speed, main = \Normality Plot for Car Speed\) qqline(cars\)</span>speed) #&lt;– gives us the line itself</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>CALCULATING PROPORTIONS OF DATA BETWEEN 1, 2, or 3 STANDARD DEVIATIONS FROM THE MEAN</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI3dlIHdpbGwgYmUgbWFraW5nIGFuZCBzYXZpbmcgaW5mbyBhYm91dCBvdXIgZGF0YVxuI291ciBkYXRhc2V0IGlzIFwiY2FycyxcIiBhbmQgd2UgY2FuIGxvb2sgYXQgc3R1ZmYgbGlrZSBzZCBhbmQgbWVhblxuWCA9IGNhcnMkc3BlZWRcbnRoZV9tZWFuID0gbWVhbihYKVxudGhlX3NkID0gc2QoWClcbndpdGhpbl9vbmVfc2QgPSBtZWFuKFggPCB0aGVfbWVhbiArIHRoZV9zZCAmIFggPiB0aGVfbWVhbiAtIHRoZV9zZClcbndpdGhpbl9vbmVfc2RcbmBgYCJ9 -->
-<pre class="r"><code>#we will be making and saving info about our data
-#our dataset is &quot;cars,&quot; and we can look at stuff like sd and mean
-X = cars$speed
-the_mean = mean(X)
-the_sd = sd(X)
-within_one_sd = mean(X &lt; the_mean + the_sd &amp; X &gt; the_mean - the_sd)
-within_one_sd</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuI3dlIHdpbGwgYmUgbWFraW5nIGFuZCBzYXZpbmcgaW5mbyBhYm91dCBvdXIgZGF0YVxuI291ciBkYXRhc2V0IGlzIFxcY2Fyc1xuYGBgIn0= -->
+<p><code>r</code>r #we will be making and saving info about our data #our dataset is ```</p>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuNjhcbiJ9 -->
 <pre><code>[1] 0.68</code></pre>
 <!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI3RoZSBhYm92ZSBpcyB3aGF0IHRoZSB3b3Jrc2hlZXQgd2FudHMgbWUgdG8gZG8sIHRob3VnaCBJIHdvbmRlciBpZiBJIGNhbiBnZXQgUiB0byBwcmludCBvdXQganVzdCAqb25lKiBvZiB0aGUgc2QgdmFsdWVzOlxudGhlX21lYW4gKyB0aGVfc2RcbmBgYCJ9 -->
-<pre class="r"><code>#the above is what the worksheet wants me to do, though I wonder if I can get R to print out just *one* of the sd values:
-the_mean + the_sd</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuI3RoZSBhYm92ZSBpcyB3aGF0IHRoZSB3b3Jrc2hlZXQgd2FudHMgbWUgdG8gZG8sIHRob3VnaCBJIHdvbmRlciBpZiBJIGNhbiBnZXQgUiB0byBwcmludCBvdXQganVzdCAqb25lKiBvZiB0aGUgc2QgdmFsdWVzOlxudGhlX21lYW4gKyB0aGVfc2RcbmBgYFxuYGBgIn0= -->
+<p><code>r</code>r #the above is what the worksheet wants me to do, though I wonder if I can get R to print out just <em>one</em> of the sd values: the_mean + the_sd</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiWzFdIDIwLjY4NzY0XG4ifQ== -->
 <pre><code>[1] 20.68764</code></pre>
 <!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI29rYXksIHRoYXQgd29ya3MuIENvdWxkIEkgZ2V0IGEgY29vcmRpbmF0ZSBvZiB0d28gdmFsdWVzLCB0aGVuP1xub25lX3NkX2F3YXkgPSBjKHRoZV9tZWFuICsgdGhlX3NkLCB0aGVfbWVhbiAtIHRoZV9zZClcbm9uZV9zZF9hd2F5XG5gYGAifQ== -->
-<pre class="r"><code>#okay, that works. Could I get a coordinate of two values, then?
-one_sd_away = c(the_mean + the_sd, the_mean - the_sd)
-one_sd_away</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuI29rYXksIHRoYXQgd29ya3MuIENvdWxkIEkgZ2V0IGEgY29vcmRpbmF0ZSBvZiB0d28gdmFsdWVzLCB0aGVuP1xub25lX3NkX2F3YXkgPSBjKHRoZV9tZWFuICsgdGhlX3NkLCB0aGVfbWVhbiAtIHRoZV9zZClcbm9uZV9zZF9hd2F5XG5gYGBcbmBgYCJ9 -->
+<p><code>r</code>r #okay, that works. Could I get a coordinate of two values, then? one_sd_away = c(the_mean + the_sd, the_mean - the_sd) one_sd_away</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiWzFdIDIwLjY4NzY0IDEwLjExMjM2XG4ifQ== -->
 <pre><code>[1] 20.68764 10.11236</code></pre>
 <!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI2Nvb2wsIHNvIHRoZSBhYm92ZSBjb2RlIERPRVMgZ2l2ZSBtZSB0d28gdmFsdWVzIGZvciBTRC4gc28gdGhlbiwgd2hhdCBpZi4uLlxuYW5vdGhlcl93YXlfd2l0aGluX29uZV9zZCA9IG1lYW4oWCA8IG9uZV9zZF9hd2F5WzFdICYgWCA+IG9uZV9zZF9hd2F5WzJdKVxuYW5vdGhlcl93YXlfd2l0aGluX29uZV9zZFxuYGBgIn0= -->
-<pre class="r"><code>#cool, so the above code DOES give me two values for SD. so then, what if...
-another_way_within_one_sd = mean(X &lt; one_sd_away[1] &amp; X &gt; one_sd_away[2])
-another_way_within_one_sd</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuI2Nvb2wsIHNvIHRoZSBhYm92ZSBjb2RlIERPRVMgZ2l2ZSBtZSB0d28gdmFsdWVzIGZvciBTRC4gc28gdGhlbiwgd2hhdCBpZi4uLlxuYW5vdGhlcl93YXlfd2l0aGluX29uZV9zZCA9IG1lYW4oWCA8IG9uZV9zZF9hd2F5WzFdICYgWCA+IG9uZV9zZF9hd2F5WzJdKVxuYW5vdGhlcl93YXlfd2l0aGluX29uZV9zZFxuYGBgXG5gYGAifQ== -->
+<p><code>r</code>r #cool, so the above code DOES give me two values for SD. so then, what if… another_way_within_one_sd = mean(X &lt; one_sd_away[1] &amp; X &gt; one_sd_away[2]) another_way_within_one_sd</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuNjhcbiJ9 -->
 <pre><code>[1] 0.68</code></pre>
 <!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI2luIGhpbmRzaWdodCwgSSB0aGluayB0aGlzIHByb2Nlc3Mgd2FzIGxlc3MgZWZmaWNpZW50IGluIHRlcm1zIG9mIGhvdyBtdWNoIEkgaGFkIHRvIHR5cGUsIGJ1dCBpdCdzIG5lYXQgdGhhdCBJIGZpZ3VyZWQgb3V0IHRoYXQgSSBkaWRuJ3QgZm9yZ2V0IHRvbyBtdWNoIGluIHRoZSB0aW1lIEkgZGlkbid0IGNvZGUuXG4jYXMgdGhlIHdvcmtzaGVldCBpbXBsaWVzLCBvZiBjb3Vyc2UsIHdlIGNhbiBlYXNpbHkgY2FsY3VsYXRlIGhvdyBtdWNoIG9mIG91ciBkYXRhIGlzIHdpdGhpbiAyIHN0YW5kYXJkIGRldidzXG53aXRoaW5fdHdvX3NkID0gbWVhbihYIDwgdGhlX21lYW4gKyAyKnRoZV9zZCAmIFggPiB0aGVfbWVhbiAtIDIqdGhlX3NkKVxud2l0aGluX3R3b19zZFxuYGBgIn0= -->
-<pre class="r"><code>#in hindsight, I think this process was less efficient in terms of how much I had to type, but it's neat that I figured out that I didn't forget too much in the time I didn't code.
-#as the worksheet implies, of course, we can easily calculate how much of our data is within 2 standard dev's
-within_two_sd = mean(X &lt; the_mean + 2*the_sd &amp; X &gt; the_mean - 2*the_sd)
-within_two_sd</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuI2luIGhpbmRzaWdodCwgSSB0aGluayB0aGlzIHByb2Nlc3Mgd2FzIGxlc3MgZWZmaWNpZW50IGluIHRlcm1zIG9mIGhvdyBtdWNoIEkgaGFkIHRvIHR5cGUsIGJ1dCBpdCdzIG5lYXQgdGhhdCBJIGZpZ3VyZWQgb3V0IHRoYXQgSSBkaWRuJ3QgZm9yZ2V0IHRvbyBtdWNoIGluIHRoZSB0aW1lIEkgZGlkbid0IGNvZGUuXG4jYXMgdGhlIHdvcmtzaGVldCBpbXBsaWVzLCBvZiBjb3Vyc2UsIHdlIGNhbiBlYXNpbHkgY2FsY3VsYXRlIGhvdyBtdWNoIG9mIG91ciBkYXRhIGlzIHdpdGhpbiAyIHN0YW5kYXJkIGRldidzXG53aXRoaW5fdHdvX3NkID0gbWVhbihYIDwgdGhlX21lYW4gKyAyKnRoZV9zZCAmIFggPiB0aGVfbWVhbiAtIDIqdGhlX3NkKVxud2l0aGluX3R3b19zZFxuYGBgXG5gYGAifQ== -->
+<p><code>r</code>r #in hindsight, I think this process was less efficient in terms of how much I had to type, but it’s neat that I figured out that I didn’t forget too much in the time I didn’t code. #as the worksheet implies, of course, we can easily calculate how much of our data is within 2 standard dev’s within_two_sd = mean(X &lt; the_mean + 2<em>the_sd &amp; X &gt; the_mean - 2</em>the_sd) within_two_sd</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuOTZcbiJ9 -->
 <pre><code>[1] 0.96</code></pre>
 <!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZWNobyBcIiMgbGVhcm5pbmdSXCIgPj4gUkVBRE1FLm1kXG5gYGAifQ== -->
-<pre class="r"><code>echo &quot;# learningR&quot; &gt;&gt; README.md</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuZWNobyBcXCMgbGVhcm5pbmdSXFwgPj4gUkVBRE1FLm1kXG5gYGBcbmBgYCJ9 -->
+<p><code>r</code>r echo # learningR &gt;&gt; README.md</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3I6IHVuZXhwZWN0ZWQgc3RyaW5nIGNvbnN0YW50IGluIFwiZWNobyBcIiMgbGVhcm5pbmdSXCJcIlxuIn0= -->
-<pre><code>Error: unexpected string constant in &quot;echo &quot;# learningR&quot;&quot;</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3I6IHVuZXhwZWN0ZWQgc3RyaW5nIGNvbnN0YW50IGluIFxcZWNobyBcXCMgbGVhcm5pbmdSXFxcXFxuIn0= -->
+<pre><code>Error: unexpected string constant in \echo \# learningR\\</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>4/29/19</p>
+<p>Yesterday: worked on configuring a repository on Github. This was successful, and my repository can be seen at: <a href="https://github.com/fox-aka-jin/R-stuff" class="uri">https://github.com/fox-aka-jin/R-stuff</a></p>
+<p>I think I will make a guide on configuring a Github soon to share with others in my lab group. Then again, the tutorial they have is already easy enough - but perhaps something more step-by-step and all-encompassing would be good. The GitHub tutorial just says “here’s stuff, do it,” rather than explain.</p>
+<p>Today: Going to do the 5th handout worksheet from my STA 100 class. Though the coding is simple, I figure that the information I’m going over will be invaluable in the future.</p>
+<p>CONFIDENCE INTERVALS FOR A SINGLE MEAN</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI2Z1bmN0aW9uIFwidC50ZXN0XCIgZ2l2ZXMgQ0lzIGZvciBhIHNpbmdsZSBtZWFuXG4jbmVlZCB0byBzcGVjaWZ5IGNvbmZpZGVuY2UgbGV2ZWwgYXMgdGhlIGFyZ3VtZW50XG4jZ29pbmcgYmFjayB0byBvdXIgZGF0YSBmb3IgY2FyczpcbmNvbmZfaW50cyA9IHQudGVzdChjYXJzJHNwZWVkLCBjb25mLmxldmVsID0gMC45NSlcbmNvbmZfaW50cyRjb25mLmludFxuYGBgIn0= -->
+<pre class="r"><code>#function &quot;t.test&quot; gives CIs for a single mean
+#need to specify confidence level as the argument
+#going back to our data for cars:
+conf_ints = t.test(cars$speed, conf.level = 0.95)
+conf_ints$conf.int</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDEzLjg5NzI3IDE2LjkwMjczXG5hdHRyKCxcImNvbmYubGV2ZWxcIilcblsxXSAwLjk1XG4ifQ== -->
+<pre><code>[1] 13.89727 16.90273
+attr(,&quot;conf.level&quot;)
+[1] 0.95</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI3ByaW50aW5nIG91dCB0aGUgaW50ZXJ2YWxzLCB3ZSBzZWUgdGhleSd2ZSBnb3QgYSBMT1Qgb2YgZGVjaW1hbHMuXG4jbGV0J3MgdHJpbSB0aG9zZSBkb3duIGJ5IHJvdW5kaW5nOlxucm91bmRlZF9pbnRzID0gcm91bmQoY29uZl9pbnRzJGNvbmYuaW50LCBkaWdpdHMgPSA0KVxucm91bmRlZF9pbnRzXG5gYGAifQ== -->
+<pre class="r"><code>#printing out the intervals, we see they've got a LOT of decimals.
+#let's trim those down by rounding:
+rounded_ints = round(conf_ints$conf.int, digits = 4)
+rounded_ints</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDEzLjg5NzMgMTYuOTAyN1xuYXR0cigsXCJjb25mLmxldmVsXCIpXG5bMV0gMC45NVxuIn0= -->
+<pre><code>[1] 13.8973 16.9027
+attr(,&quot;conf.level&quot;)
+[1] 0.95</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubG93ZXJfYm91bmQgPSByb3VuZGVkX2ludHNbMV1cbnVwcGVyX2JvdW5kID0gcm91bmRlZF9pbnRzWzJdXG5gYGAifQ== -->
+<pre class="r"><code>lower_bound = rounded_ints[1]
+upper_bound = rounded_ints[2]</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>CONFIDENCE INTERVAL FOR INDEPENDENT SAMPLES</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI3dlJ2xsIGJlIHVzaW5nIGFub3RoZXIgZGF0YWJhc2UgYnVpbHQgaW50byBSLCBcImNhdHNcIlxubGlicmFyeShNQVNTKVxuaGVhZChjYXRzKVxuXG4jd2Ugd2FudCB0byBkZXRlcm1pbmUgdGhlIENJIGZvciB0aGUgRElGRkVSRU5DRSBpbiB0d28gbWVhbnNcbiN0aGUgZ2VuZXJhbCBlcSduIGZvcm11bGE6XG5cbiNjb25maW50Zm9ydHdvID0gdC50ZXN0KG51bWVyaWNjb2x1bW4gfiBncm91cGNvbHVtbiwgZGF0YSA9IGRhdGFzZXRuYW1lLCBjb25mLmxldmVsID0gMSAtIGFscGhhKVxuXG50aGVfY29uZl9pbnQgPSB0LnRlc3QoSHd0IH4gU2V4LCBkYXRhID0gY2F0cywgY29uZi5sZXZlbCA9IDAuOTUpXG50aGVfY29uZl9pbnQkY29uZi5pbnRcblxuYW5vdGhlcl9sb3dlcl9ib3VuZCA9IHRoZV9jb25mX2ludCRjb25mLmludFsxXVxuYW5vdGhlcl91cHBlcl9ib3VuZCA9IHRoZV9jb25mX2ludCRjb25mLmludFsyXVxuXG5hbm90aGVyX2xvd2VyX2JvdW5kXG5hbm90aGVyX3VwcGVyX2JvdW5kXG5cbiNyZW1lbWJlcjogaXQgaXMgQ1JJVElDQUwgdGhhdCB3ZSBkbyB2YXJpYWJsZSRjb25mLmludCB3aGVuIHByaW50aW5nIG91dFxuYGBgIn0= -->
+<pre class="r"><code>#we'll be using another database built into R, &quot;cats&quot;
+library(MASS)
+head(cats)
+
+#we want to determine the CI for the DIFFERENCE in two means
+#the general eq'n formula:
+
+#confintfortwo = t.test(numericcolumn ~ groupcolumn, data = datasetname, conf.level = 1 - alpha)
+
+the_conf_int = t.test(Hwt ~ Sex, data = cats, conf.level = 0.95)
+the_conf_int$conf.int
+
+another_lower_bound = the_conf_int$conf.int[1]
+another_upper_bound = the_conf_int$conf.int[2]
+
+another_lower_bound
+another_upper_bound
+
+#remember: it is CRITICAL that we do variable$conf.int when printing out</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>5/1/20</p>
+<p>Today, I’ll work on the 6th STA 100 worksheet:</p>
+<p>HYPOTHESIS TEST FOR INDEPENDENT SAMPLES - THE DATA</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI3RoZSBkYXRhIHdlJ2xsIGJlIHdvcmtpbmcgd2l0aDpcbm5vbnNtb2tlcnMgPSBjKDE4LDIyLDIxLDE3LDIwLDE3LDIzLDIwLDIyLDIxKVxuc21va2VycyA9IGMoMTYsMjAsMTQsMjEsMjAsMTgsMTMsMTUsMTcsMjEpXG5zbW9rZSA9IGRhdGEuZnJhbWUoc2NvcmUgPSBjKG5vbnNtb2tlcnMsc21va2VycyksZ3JvdXAgPSByZXAoYyhcIk5vbi1TbW9rZVwiLFwiU21va2VcIiksdGltZXMgPSBjKGxlbmd0aChub25zbW9rZXJzKSxsZW5ndGgoc21va2VycykpKSApXG5gYGAifQ== -->
+<pre class="r"><code>#the data we'll be working with:
+nonsmokers = c(18,22,21,17,20,17,23,20,22,21)
+smokers = c(16,20,14,21,20,18,13,15,17,21)
+smoke = data.frame(score = c(nonsmokers,smokers),group = rep(c(&quot;Non-Smoke&quot;,&quot;Smoke&quot;),times = c(length(nonsmokers),length(smokers))) )</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>HYPOTHESIS TEST FOR INDEPENDENT SAMPLE</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI2NvZGUsIGFsc28gcHJvdmlkZWQgYnkgd29ya3NoZWV0OlxuI3RvIHJ1biBhIDItc2lkZWQgdGVzdCBmb3IgdGhlIGFsdGVybmF0aXZlIGh5cG90aGVzaXMsXG50d28uc2lkZSA9IHQudGVzdChzY29yZSB+IGdyb3VwLCBkYXRhID0gc21va2UsIGNvbmYubGV2ZWwgPSAwLjk5LGFsdGVybmF0aXZlID0gXCJ0d28uc2lkZWRcIilcbiN0byBydW4gYSBvbmUtc2lkZWQsIGdyZWF0ZXIgdGhhbiB0ZXN0LFxuZ3JlYXRlciA9IHQudGVzdChzY29yZSB+IGdyb3VwLCBkYXRhID0gc21va2UsIGNvbmYubGV2ZWwgPSAwLjk5LGFsdGVybmF0aXZlID0gXCJncmVhdGVyXCIpXG4jdG8gcnVuIGEgb25lLXNpZGVkLCBsZXNzIHRoYW4gdGVzdFxubGVzcyA9IHQudGVzdChzY29yZSB+IGdyb3VwLCBkYXRhID0gc21va2UsIGNvbmYubGV2ZWwgPSAwLjk5LGFsdGVybmF0aXZlID0gXCJsZXNzXCIpXG4jdG8gc2VlIHRoZSBwLXZhbHVlIGZvciBvbmUgb2YgdGhlc2UgdGVzdHNcbmxlc3MkcC52YWx1ZVxuYGBgIn0= -->
+<pre class="r"><code>#code, also provided by worksheet:
+#to run a 2-sided test for the alternative hypothesis,
+two.side = t.test(score ~ group, data = smoke, conf.level = 0.99,alternative = &quot;two.sided&quot;)
+#to run a one-sided, greater than test,
+greater = t.test(score ~ group, data = smoke, conf.level = 0.99,alternative = &quot;greater&quot;)
+#to run a one-sided, less than test
+less = t.test(score ~ group, data = smoke, conf.level = 0.99,alternative = &quot;less&quot;)
+#to see the p-value for one of these tests
+less$p.value</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuOTgxMDEyM1xuIn0= -->
+<pre><code>[1] 0.9810123</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI2FuZCB0ZXN0LXN0YXRpc3RpYzpcbmxlc3Mkc3RhdGlzdGljXG5gYGAifQ== -->
+<pre class="r"><code>#and test-statistic:
+less$statistic</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgIHQgXG4yLjI1NzMxNiBcbiJ9 -->
+<pre><code>       t 
+2.257316 </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>ANOVA STUFF</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI0dvYWwgb2YgQU5PVkE6IHNlZSBpZiB0aGUgbWVhbnMgb2YgZGlmZmVyZW50IGdyb3VwcyBhcmUgZGlmZmVyZW50XG4jd2Ugd2lsbCBiZSB1c2luZyBQbGFudEdyb3d0aCwgYSBkYXRhc2V0IGJ1aWx0IGludG8gUlxubmFtZXMoUGxhbnRHcm93dGgpXG5gYGAifQ== -->
+<pre class="r"><code>#Goal of ANOVA: see if the means of different groups are different
+#we will be using PlantGrowth, a dataset built into R
+names(PlantGrowth)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwid2VpZ2h0XCIgXCJncm91cFwiIFxuIn0= -->
+<pre><code>[1] &quot;weight&quot; &quot;group&quot; </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI3Nob3dzIHVzIHR3byBncm91cHM6IHdlaWdodCAobnVtZXJpY2FsKSBhbmQgZ3JvdXAgKGNhdGVnb3JpY2FsKVxuI2ZpcnN0LCBuZWVkIHRvIHByb2Nlc3MgdGhlIGRhdGEgaW4gYSB3YXkgdGhhdCBBTk9WQSB3aWxsIHdvcmsgd2l0aCBpdC5cbmRhdGFzdHVmZiA9IGxtKHdlaWdodCB+IGdyb3VwLCBkYXRhID0gUGxhbnRHcm93dGgpXG4jbm93LCB3ZSBjYW4gdXNlIHRoZSBBTk9WQSBmdW5jdGlvblxuYW5vdmF0YWJsZSA9IGFub3ZhKGRhdGFzdHVmZilcbmFub3ZhdGFibGVcbmBgYCJ9 -->
+<pre class="r"><code>#shows us two groups: weight (numerical) and group (categorical)
+#first, need to process the data in a way that ANOVA will work with it.
+datastuff = lm(weight ~ group, data = PlantGrowth)
+#now, we can use the ANOVA function
+anovatable = anova(datastuff)
+anovatable</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiQW5hbHlzaXMgb2YgVmFyaWFuY2UgVGFibGVcblxuUmVzcG9uc2U6IHdlaWdodFxuICAgICAgICAgIERmICBTdW0gU3EgTWVhbiBTcSBGIHZhbHVlICBQcig+RikgIFxuZ3JvdXAgICAgICAyICAzLjc2NjMgIDEuODgzMiAgNC44NDYxIDAuMDE1OTEgKlxuUmVzaWR1YWxzIDI3IDEwLjQ5MjEgIDAuMzg4NiAgICAgICAgICAgICAgICAgIFxuLS0tXG5TaWduaWYuIGNvZGVzOiAgMCDigJgqKirigJkgMC4wMDEg4oCYKirigJkgMC4wMSDigJgq4oCZIDAuMDUg4oCYLuKAmSAwLjEg4oCYIOKAmSAxXG4ifQ== -->
+<pre><code>Analysis of Variance Table
+
+Response: weight
+          Df  Sum Sq Mean Sq F value  Pr(&gt;F)  
+group      2  3.7663  1.8832  4.8461 0.01591 *
+Residuals 27 10.4921  0.3886                  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI25vdGUgdGhhdCB0aGUgXCJncm91cFwiIHJvdyBnaXZlcyBkZihiZXR3ZWVuKSwgU1MoYmV0d2VlbiksIE1TKGJldHdlZW4pLCBGcywgYW5kIFAoRiA+IEZzKVxuI3RoZSBSZXNpZHVhbHMgcm93IGdpdmVzIHVzIGRmKHdpdGhpbiksIFNTKHdpdGhpbiksIE1TKHdpdGhpbilcbiN3ZSB3aWxsIG5lZWQgdG8gcHVsbCBzcGVjaWZpYyBiaXRzIG9mIGRhdGEgZnJvbSB0aGUgdGFibGUgaW4gb3JkZXIgdG8gdXNlIHRoZW1cbkYuc3RhdCA9IGFub3ZhdGFibGVbMSw0XVxucC52YWx1ZSA9IGFub3ZhdGFibGVbMSw1XVxuRi5zdGF0XG5gYGAifQ== -->
+<pre class="r"><code>#note that the &quot;group&quot; row gives df(between), SS(between), MS(between), Fs, and P(F &gt; Fs)
+#the Residuals row gives us df(within), SS(within), MS(within)
+#we will need to pull specific bits of data from the table in order to use them
+F.stat = anovatable[1,4]
+p.value = anovatable[1,5]
+F.stat</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDQuODQ2MDg4XG4ifQ== -->
+<pre><code>[1] 4.846088</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucC52YWx1ZVxuYGBgIn0= -->
+<pre class="r"><code>p.value</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuMDE1OTA5OTZcbiJ9 -->
+<pre><code>[1] 0.01590996</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKNC8yNy8xOQoKSG9waW5nIHRvIG1ha2UgdXAgZm9yIGxvc3QgdGltZSBmcm9tIGxhc3Qgd2VlayB0aGlzIHdlZWsuIElmIEkgd29yayBvbiBSIGEgbGl0dGxlIGJpdCBlYWNoIGRheSwgSSBzaG91bGQgYmUgYWJsZSB0byBsZWFybiBxdWl0ZSBhIGJpdCEKCkknbSB3b3JraW5nIGhlcmUgaW4gUiBNYXJrZG93bi9Ob3RlYm9vayBtb2RlLCBhcyBJIHJlYWQgc29tZXdoZXJlIGl0J3MgYSBnb29kIHByYWN0aWNlIHRvIGRvIHNvLgoKVG9kYXksIEknbGwgYmUgd29ya2luZyBvbiB0aGUgM3JkIEhhbmRvdXQgZnJvbSBteSBTVEEgMTAwIGNvdXJzZS4gSXQgd2lsbCBiZSB1c2luZyB0aGUgYnVpbHQtaW4gZGF0YXNldCAqY2FycyouCgpRUS1QTE9UIE9SIE5PUk1BTCBQUk9CQUJJTElUWSBQTE9UCmBgYHtyfQojIFFRLVBsb3QsIGFrYSBOb3JtYWwgUHJvYmFiaWxpdHkgUGxvdAogICNjaGVja3Mgbm9ybWFsaXR5IG9mIGRhdGEgZGlzdHJpYnV0aW9uCiAgI25vcm1hbGl0eSA9IGEgbWV0aG9kIHRvIGRldGVybWluZSBvdXRsaWVycywgc2tld25lc3MsIGV0Yy4KCmNsYXNzKGNhcnMpClZpZXcoY2FycykKI3JlbWVtYmVyOiBpdCBpcyBhIGdvb2QgcHJhY3RpY2UgdG8gc3RhcnQgYnkgbG9va2luZyBhdCB0aGUgY2xhc3Mgb2YgdGhlIGRhdGEsIGFzIHdlbGwgYXMgYXQgdGhlIGRhdGEgaXRzZWxmLgogICN3ZSBzZWUgdGhhdCB0aGUgY2xhc3MgaXMgImRhdGFmcmFtZS4iCgpxcW5vcm0oY2FycyRzcGVlZCwgbWFpbiA9ICJOb3JtYWxpdHkgUGxvdCBmb3IgQ2FyIFNwZWVkIikKcXFsaW5lKGNhcnMkc3BlZWQpICM8LS0gZ2l2ZXMgdXMgdGhlIGxpbmUgaXRzZWxmCgpgYGAKCgpDQUxDVUxBVElORyBQUk9QT1JUSU9OUyBPRiBEQVRBIEJFVFdFRU4gMSwgMiwgb3IgMyBTVEFOREFSRCBERVZJQVRJT05TIEZST00gVEhFIE1FQU4KYGBge3J9CiN3ZSB3aWxsIGJlIG1ha2luZyBhbmQgc2F2aW5nIGluZm8gYWJvdXQgb3VyIGRhdGEKI291ciBkYXRhc2V0IGlzICJjYXJzLCIgYW5kIHdlIGNhbiBsb29rIGF0IHN0dWZmIGxpa2Ugc2QgYW5kIG1lYW4KClggPSBjYXJzJHNwZWVkCnRoZV9tZWFuID0gbWVhbihYKQp0aGVfc2QgPSBzZChYKQp3aXRoaW5fb25lX3NkID0gbWVhbihYIDwgdGhlX21lYW4gKyB0aGVfc2QgJiBYID4gdGhlX21lYW4gLSB0aGVfc2QpCndpdGhpbl9vbmVfc2QKCiN0aGUgYWJvdmUgaXMgd2hhdCB0aGUgd29ya3NoZWV0IHdhbnRzIG1lIHRvIGRvLCB0aG91Z2ggSSB3b25kZXIgaWYgSSBjYW4gZ2V0IFIgdG8gcHJpbnQgb3V0IGp1c3QgKm9uZSogb2YgdGhlIHNkIHZhbHVlczoKdGhlX21lYW4gKyB0aGVfc2QKI29rYXksIHRoYXQgd29ya3MuIENvdWxkIEkgZ2V0IGEgY29vcmRpbmF0ZSBvZiB0d28gdmFsdWVzLCB0aGVuPwpvbmVfc2RfYXdheSA9IGModGhlX21lYW4gKyB0aGVfc2QsIHRoZV9tZWFuIC0gdGhlX3NkKQpvbmVfc2RfYXdheQojY29vbCwgc28gdGhlIGFib3ZlIGNvZGUgRE9FUyBnaXZlIG1lIHR3byB2YWx1ZXMgZm9yIFNELiBzbyB0aGVuLCB3aGF0IGlmLi4uCmFub3RoZXJfd2F5X3dpdGhpbl9vbmVfc2QgPSBtZWFuKFggPCBvbmVfc2RfYXdheVsxXSAmIFggPiBvbmVfc2RfYXdheVsyXSkKYW5vdGhlcl93YXlfd2l0aGluX29uZV9zZAoKI2luIGhpbmRzaWdodCwgSSB0aGluayB0aGlzIHByb2Nlc3Mgd2FzIGxlc3MgZWZmaWNpZW50IGluIHRlcm1zIG9mIGhvdyBtdWNoIEkgaGFkIHRvIHR5cGUsIGJ1dCBpdCdzIG5lYXQgdGhhdCBJIGZpZ3VyZWQgb3V0IHRoYXQgSSBkaWRuJ3QgZm9yZ2V0IHRvbyBtdWNoIGluIHRoZSB0aW1lIEkgZGlkbid0IGNvZGUuCgojYXMgdGhlIHdvcmtzaGVldCBpbXBsaWVzLCBvZiBjb3Vyc2UsIHdlIGNhbiBlYXNpbHkgY2FsY3VsYXRlIGhvdyBtdWNoIG9mIG91ciBkYXRhIGlzIHdpdGhpbiAyIHN0YW5kYXJkIGRldidzCndpdGhpbl90d29fc2QgPSBtZWFuKFggPCB0aGVfbWVhbiArIDIqdGhlX3NkICYgWCA+IHRoZV9tZWFuIC0gMip0aGVfc2QpCndpdGhpbl90d29fc2QKCgpgYGAKCgoKCgoKCgoK</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKNC8yNy8xOQoKSG9waW5nIHRvIG1ha2UgdXAgZm9yIGxvc3QgdGltZSBmcm9tIGxhc3Qgd2VlayB0aGlzIHdlZWsuIElmIEkgd29yayBvbiBSIGEgbGl0dGxlIGJpdCBlYWNoIGRheSwgSSBzaG91bGQgYmUgYWJsZSB0byBsZWFybiBxdWl0ZSBhIGJpdCEKCkknbSB3b3JraW5nIGhlcmUgaW4gUiBNYXJrZG93bi9Ob3RlYm9vayBtb2RlLCBhcyBJIHJlYWQgc29tZXdoZXJlIGl0J3MgYSBnb29kIHByYWN0aWNlIHRvIGRvIHNvLgoKVG9kYXksIEknbGwgYmUgd29ya2luZyBvbiB0aGUgM3JkIEhhbmRvdXQgZnJvbSBteSBTVEEgMTAwIGNvdXJzZS4gSXQgd2lsbCBiZSB1c2luZyB0aGUgYnVpbHQtaW4gZGF0YXNldCAqY2FycyouCgpRUS1QTE9UIE9SIE5PUk1BTCBQUk9CQUJJTElUWSBQTE9UCmBgYHtyfQojIFFRLVBsb3QsIGFrYSBOb3JtYWwgUHJvYmFiaWxpdHkgUGxvdAogICNjaGVja3Mgbm9ybWFsaXR5IG9mIGRhdGEgZGlzdHJpYnV0aW9uCiAgI25vcm1hbGl0eSA9IGEgbWV0aG9kIHRvIGRldGVybWluZSBvdXRsaWVycywgc2tld25lc3MsIGV0Yy4KCmNsYXNzKGNhcnMpClZpZXcoY2FycykKI3JlbWVtYmVyOiBpdCBpcyBhIGdvb2QgcHJhY3RpY2UgdG8gc3RhcnQgYnkgbG9va2luZyBhdCB0aGUgY2xhc3Mgb2YgdGhlIGRhdGEsIGFzIHdlbGwgYXMgYXQgdGhlIGRhdGEgaXRzZWxmLgogICN3ZSBzZWUgdGhhdCB0aGUgY2xhc3MgaXMgImRhdGFmcmFtZS4iCgpxcW5vcm0oY2FycyRzcGVlZCwgbWFpbiA9ICJOb3JtYWxpdHkgUGxvdCBmb3IgQ2FyIFNwZWVkIikKcXFsaW5lKGNhcnMkc3BlZWQpICM8LS0gZ2l2ZXMgdXMgdGhlIGxpbmUgaXRzZWxmCgpgYGAKCgpDQUxDVUxBVElORyBQUk9QT1JUSU9OUyBPRiBEQVRBIEJFVFdFRU4gMSwgMiwgb3IgMyBTVEFOREFSRCBERVZJQVRJT05TIEZST00gVEhFIE1FQU4KYGBge3J9CiN3ZSB3aWxsIGJlIG1ha2luZyBhbmQgc2F2aW5nIGluZm8gYWJvdXQgb3VyIGRhdGEKI291ciBkYXRhc2V0IGlzICJjYXJzLCIgYW5kIHdlIGNhbiBsb29rIGF0IHN0dWZmIGxpa2Ugc2QgYW5kIG1lYW4KClggPSBjYXJzJHNwZWVkCnRoZV9tZWFuID0gbWVhbihYKQp0aGVfc2QgPSBzZChYKQp3aXRoaW5fb25lX3NkID0gbWVhbihYIDwgdGhlX21lYW4gKyB0aGVfc2QgJiBYID4gdGhlX21lYW4gLSB0aGVfc2QpCndpdGhpbl9vbmVfc2QKCiN0aGUgYWJvdmUgaXMgd2hhdCB0aGUgd29ya3NoZWV0IHdhbnRzIG1lIHRvIGRvLCB0aG91Z2ggSSB3b25kZXIgaWYgSSBjYW4gZ2V0IFIgdG8gcHJpbnQgb3V0IGp1c3QgKm9uZSogb2YgdGhlIHNkIHZhbHVlczoKdGhlX21lYW4gKyB0aGVfc2QKI29rYXksIHRoYXQgd29ya3MuIENvdWxkIEkgZ2V0IGEgY29vcmRpbmF0ZSBvZiB0d28gdmFsdWVzLCB0aGVuPwpvbmVfc2RfYXdheSA9IGModGhlX21lYW4gKyB0aGVfc2QsIHRoZV9tZWFuIC0gdGhlX3NkKQpvbmVfc2RfYXdheQojY29vbCwgc28gdGhlIGFib3ZlIGNvZGUgRE9FUyBnaXZlIG1lIHR3byB2YWx1ZXMgZm9yIFNELiBzbyB0aGVuLCB3aGF0IGlmLi4uCmFub3RoZXJfd2F5X3dpdGhpbl9vbmVfc2QgPSBtZWFuKFggPCBvbmVfc2RfYXdheVsxXSAmIFggPiBvbmVfc2RfYXdheVsyXSkKYW5vdGhlcl93YXlfd2l0aGluX29uZV9zZAoKI2luIGhpbmRzaWdodCwgSSB0aGluayB0aGlzIHByb2Nlc3Mgd2FzIGxlc3MgZWZmaWNpZW50IGluIHRlcm1zIG9mIGhvdyBtdWNoIEkgaGFkIHRvIHR5cGUsIGJ1dCBpdCdzIG5lYXQgdGhhdCBJIGZpZ3VyZWQgb3V0IHRoYXQgSSBkaWRuJ3QgZm9yZ2V0IHRvbyBtdWNoIGluIHRoZSB0aW1lIEkgZGlkbid0IGNvZGUuCgojYXMgdGhlIHdvcmtzaGVldCBpbXBsaWVzLCBvZiBjb3Vyc2UsIHdlIGNhbiBlYXNpbHkgY2FsY3VsYXRlIGhvdyBtdWNoIG9mIG91ciBkYXRhIGlzIHdpdGhpbiAyIHN0YW5kYXJkIGRldidzCndpdGhpbl90d29fc2QgPSBtZWFuKFggPCB0aGVfbWVhbiArIDIqdGhlX3NkICYgWCA+IHRoZV9tZWFuIC0gMip0aGVfc2QpCndpdGhpbl90d29fc2QKCgpgYGAKCjQvMjkvMTkKClllc3RlcmRheTogd29ya2VkIG9uIGNvbmZpZ3VyaW5nIGEgcmVwb3NpdG9yeSBvbiBHaXRodWIuIFRoaXMgd2FzIHN1Y2Nlc3NmdWwsIGFuZCBteSByZXBvc2l0b3J5IGNhbiBiZSBzZWVuIGF0OgpodHRwczovL2dpdGh1Yi5jb20vZm94LWFrYS1qaW4vUi1zdHVmZgoKSSB0aGluayBJIHdpbGwgbWFrZSBhIGd1aWRlIG9uIGNvbmZpZ3VyaW5nIGEgR2l0aHViIHNvb24gdG8gc2hhcmUgd2l0aCBvdGhlcnMgaW4gbXkgbGFiIGdyb3VwLiBUaGVuIGFnYWluLCB0aGUgdHV0b3JpYWwgdGhleSBoYXZlIGlzIGFscmVhZHkgZWFzeSBlbm91Z2ggLSBidXQgcGVyaGFwcyBzb21ldGhpbmcgbW9yZSBzdGVwLWJ5LXN0ZXAgYW5kIGFsbC1lbmNvbXBhc3Npbmcgd291bGQgYmUgZ29vZC4gVGhlIEdpdEh1YiB0dXRvcmlhbCBqdXN0IHNheXMgImhlcmUncyBzdHVmZiwgZG8gaXQsIiByYXRoZXIgdGhhbiBleHBsYWluLgoKClRvZGF5OiBHb2luZyB0byBkbyB0aGUgNXRoIGhhbmRvdXQgd29ya3NoZWV0IGZyb20gbXkgU1RBIDEwMCBjbGFzcy4gVGhvdWdoIHRoZSBjb2RpbmcgaXMgc2ltcGxlLCBJIGZpZ3VyZSB0aGF0IHRoZSBpbmZvcm1hdGlvbiBJJ20gZ29pbmcgb3ZlciB3aWxsIGJlIGludmFsdWFibGUgaW4gdGhlIGZ1dHVyZS4KCkNPTkZJREVOQ0UgSU5URVJWQUxTIEZPUiBBIFNJTkdMRSBNRUFOCmBgYHtyfQojZnVuY3Rpb24gInQudGVzdCIgZ2l2ZXMgQ0lzIGZvciBhIHNpbmdsZSBtZWFuCiNuZWVkIHRvIHNwZWNpZnkgY29uZmlkZW5jZSBsZXZlbCBhcyB0aGUgYXJndW1lbnQKI2dvaW5nIGJhY2sgdG8gb3VyIGRhdGEgZm9yIGNhcnM6Cgpjb25mX2ludHMgPSB0LnRlc3QoY2FycyRzcGVlZCwgY29uZi5sZXZlbCA9IDAuOTUpCmNvbmZfaW50cyRjb25mLmludAoKI3ByaW50aW5nIG91dCB0aGUgaW50ZXJ2YWxzLCB3ZSBzZWUgdGhleSd2ZSBnb3QgYSBMT1Qgb2YgZGVjaW1hbHMuCiNsZXQncyB0cmltIHRob3NlIGRvd24gYnkgcm91bmRpbmc6Cgpyb3VuZGVkX2ludHMgPSByb3VuZChjb25mX2ludHMkY29uZi5pbnQsIGRpZ2l0cyA9IDQpCnJvdW5kZWRfaW50cwpsb3dlcl9ib3VuZCA9IHJvdW5kZWRfaW50c1sxXQp1cHBlcl9ib3VuZCA9IHJvdW5kZWRfaW50c1syXQoKYGBgCgpDT05GSURFTkNFIElOVEVSVkFMIEZPUiBJTkRFUEVOREVOVCBTQU1QTEVTCmBgYHtyfQojd2UnbGwgYmUgdXNpbmcgYW5vdGhlciBkYXRhYmFzZSBidWlsdCBpbnRvIFIsICJjYXRzIgpsaWJyYXJ5KE1BU1MpCmhlYWQoY2F0cykKCiN3ZSB3YW50IHRvIGRldGVybWluZSB0aGUgQ0kgZm9yIHRoZSBESUZGRVJFTkNFIGluIHR3byBtZWFucwojdGhlIGdlbmVyYWwgZXEnbiBmb3JtdWxhOgoKI2NvbmZpbnRmb3J0d28gPSB0LnRlc3QobnVtZXJpY2NvbHVtbiB+IGdyb3VwY29sdW1uLCBkYXRhID0gZGF0YXNldG5hbWUsIGNvbmYubGV2ZWwgPSAxIC0gYWxwaGEpCgp0aGVfY29uZl9pbnQgPSB0LnRlc3QoSHd0IH4gU2V4LCBkYXRhID0gY2F0cywgY29uZi5sZXZlbCA9IDAuOTUpCnRoZV9jb25mX2ludCRjb25mLmludAoKYW5vdGhlcl9sb3dlcl9ib3VuZCA9IHRoZV9jb25mX2ludCRjb25mLmludFsxXQphbm90aGVyX3VwcGVyX2JvdW5kID0gdGhlX2NvbmZfaW50JGNvbmYuaW50WzJdCgphbm90aGVyX2xvd2VyX2JvdW5kCmFub3RoZXJfdXBwZXJfYm91bmQKCiNyZW1lbWJlcjogaXQgaXMgQ1JJVElDQUwgdGhhdCB3ZSBkbyB2YXJpYWJsZSRjb25mLmludCB3aGVuIHByaW50aW5nIG91dApgYGAKCgo1LzEvMjAKClRvZGF5LCBJJ2xsIHdvcmsgb24gdGhlIDZ0aCBTVEEgMTAwIHdvcmtzaGVldDoKCkhZUE9USEVTSVMgVEVTVCBGT1IgSU5ERVBFTkRFTlQgU0FNUExFUyAtIFRIRSBEQVRBCmBgYHtyfQojdGhlIGRhdGEgd2UnbGwgYmUgd29ya2luZyB3aXRoLCBwcm92aWRlZCBieSB0aGUgd29ya3NoZWV0OgogICMoZGVmaW5pdGVseSBub3Qgc2tpbGxlZCBlbm91Z2ggdG8gbWFuaXB1bGF0ZSBkYXRhIGxpa2UgdGhpcyB5ZXQpCm5vbnNtb2tlcnMgPSBjKDE4LDIyLDIxLDE3LDIwLDE3LDIzLDIwLDIyLDIxKQpzbW9rZXJzID0gYygxNiwyMCwxNCwyMSwyMCwxOCwxMywxNSwxNywyMSkKc21va2UgPSBkYXRhLmZyYW1lKHNjb3JlID0gYyhub25zbW9rZXJzLHNtb2tlcnMpLGdyb3VwID0gcmVwKGMoIk5vbi1TbW9rZSIsIlNtb2tlIiksdGltZXMgPSBjKGxlbmd0aChub25zbW9rZXJzKSxsZW5ndGgoc21va2VycykpKSApCgpgYGAKCgpIWVBPVEhFU0lTIFRFU1QgRk9SIElOREVQRU5ERU5UIFNBTVBMRQpgYGB7cn0KI2NvZGUsIGFsc28gcHJvdmlkZWQgYnkgd29ya3NoZWV0OgoKI3RvIHJ1biBhIDItc2lkZWQgdGVzdCBmb3IgdGhlIGFsdGVybmF0aXZlIGh5cG90aGVzaXMsCnR3by5zaWRlID0gdC50ZXN0KHNjb3JlIH4gZ3JvdXAsIGRhdGEgPSBzbW9rZSwgY29uZi5sZXZlbCA9IDAuOTksYWx0ZXJuYXRpdmUgPSAidHdvLnNpZGVkIikKCiN0byBydW4gYSBvbmUtc2lkZWQsIGdyZWF0ZXIgdGhhbiB0ZXN0LApncmVhdGVyID0gdC50ZXN0KHNjb3JlIH4gZ3JvdXAsIGRhdGEgPSBzbW9rZSwgY29uZi5sZXZlbCA9IDAuOTksYWx0ZXJuYXRpdmUgPSAiZ3JlYXRlciIpCgojdG8gcnVuIGEgb25lLXNpZGVkLCBsZXNzIHRoYW4gdGVzdApsZXNzID0gdC50ZXN0KHNjb3JlIH4gZ3JvdXAsIGRhdGEgPSBzbW9rZSwgY29uZi5sZXZlbCA9IDAuOTksYWx0ZXJuYXRpdmUgPSAibGVzcyIpCgoKI3RvIHNlZSB0aGUgcC12YWx1ZSBmb3Igb25lIG9mIHRoZXNlIHRlc3RzCmxlc3MkcC52YWx1ZQojYW5kIHRlc3Qtc3RhdGlzdGljOgpsZXNzJHN0YXRpc3RpYwoKYGBgCgoKQU5PVkEgU1RVRkYKYGBge3J9CiNHb2FsIG9mIEFOT1ZBOiBzZWUgaWYgdGhlIG1lYW5zIG9mIGRpZmZlcmVudCBncm91cHMgYXJlIGRpZmZlcmVudAojd2Ugd2lsbCBiZSB1c2luZyBQbGFudEdyb3d0aCwgYSBkYXRhc2V0IGJ1aWx0IGludG8gUgpuYW1lcyhQbGFudEdyb3d0aCkKI3Nob3dzIHVzIHR3byBncm91cHM6IHdlaWdodCAobnVtZXJpY2FsKSBhbmQgZ3JvdXAgKGNhdGVnb3JpY2FsKQoKI2ZpcnN0LCBuZWVkIHRvIHByb2Nlc3MgdGhlIGRhdGEgaW4gYSB3YXkgdGhhdCBBTk9WQSB3aWxsIHdvcmsgd2l0aCBpdC4KZGF0YXN0dWZmID0gbG0od2VpZ2h0IH4gZ3JvdXAsIGRhdGEgPSBQbGFudEdyb3d0aCkKCiNub3csIHdlIGNhbiB1c2UgdGhlIEFOT1ZBIGZ1bmN0aW9uCmFub3ZhdGFibGUgPSBhbm92YShkYXRhc3R1ZmYpCmFub3ZhdGFibGUKCiNub3RlIHRoYXQgdGhlICJncm91cCIgcm93IGdpdmVzIGRmKGJldHdlZW4pLCBTUyhiZXR3ZWVuKSwgTVMoYmV0d2VlbiksIEZzLCBhbmQgUChGID4gRnMpCiN0aGUgUmVzaWR1YWxzIHJvdyBnaXZlcyB1cyBkZih3aXRoaW4pLCBTUyh3aXRoaW4pLCBNUyh3aXRoaW4pCiN3ZSB3aWxsIG5lZWQgdG8gcHVsbCBzcGVjaWZpYyBiaXRzIG9mIGRhdGEgZnJvbSB0aGUgdGFibGUgaW4gb3JkZXIgdG8gdXNlIHRoZW0KCkYuc3RhdCA9IGFub3ZhdGFibGVbMSw0XQpwLnZhbHVlID0gYW5vdmF0YWJsZVsxLDVdCgpGLnN0YXQKcC52YWx1ZQpgYGAKCgo=</div>
 
 
 

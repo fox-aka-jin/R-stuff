@@ -1,0 +1,24 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1588629144854.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3390426849",
+    "id" : "704E79C0",
+    "lastKnownWriteTime" : 1588919655,
+    "last_content_update" : 1588919655417,
+    "path" : "~/Documents/GitHub/R-stuff/MCB 123 HW data processing.Rmd",
+    "project_path" : "MCB 123 HW data processing.Rmd",
+    "properties" : {
+        "chunk_output_type" : "inline",
+        "cursorPosition" : "20,20",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

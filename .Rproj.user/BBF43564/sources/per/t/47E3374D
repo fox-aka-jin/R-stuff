@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1588632509450.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "47E3374D",
+    "lastKnownWriteTime" : 141733920768,
+    "last_content_update" : 1588632509450,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "3B40A5AD",
+        "caption" : "hw2table3",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=hw2table3&cache_key=3B40A5AD",
+        "displayedObservations" : "12",
+        "environment" : "",
+        "object" : "hw2table3",
+        "preview" : "0",
+        "totalObservations" : "12",
+        "variables" : "6"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

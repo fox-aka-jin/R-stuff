@@ -1,0 +1,118 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+5/4/20
+
+I figure I can knock out 2 birds in one stone by doing both my coding practice and MCB 123 HW today in one exercise.
+
+I need to make an activity curve for [NADH] using some provided data.
+
+Steps taken:
+1) convert excel data spreadsheet into a .csv file (R Studio only seems to like .csv, rather than .txt)
+  -my data spreadsheet was saved as "hw2table3"
+  -weirdly enough, importing my data gave me 3 extra rows of data. I dealt with that by simply telling R to use the data in rows 1 to 9
+  
+2) Used google to determine the equation I need to use
+  -determined that it's best to use a non-linear regression
+  
+3) General form of non-linear regression:
+  lines(x, fitted(line), lty = 2, col = "black", lwd = 1)
+    -these are the properties of the line
+  line = nls(y~vmax*x/(km+x))
+    -nls: the function for a non-linear regression, the stuff we put inside are the equation we use for the linreg
+    
+4) Confirmed that the line fits our data well through R.square
+  RSS = sum(residuals(line)^2)
+  TSS = sum((y - mean(y))^2)
+  R.square = 1 - (RSS/TSS)
+  R.square
+
+
+```{r}
+
+x = hw2table3$X.NADH...µM[1:9]
+y = hw2table3$Average.Velocity[1:9]
+
+enz1table = plot(hw2table3$X.NADH...µM., hw2table3$Average.Velocity, main = "Enzyme 1 Velocity vs. [NADH]", xlab = "[NADH] (µM)", ylab = "Average Velocity (Units)")
+lines(x, fitted(line), lty = 2, col = "black", lwd = 1)
+line = nls(y~vmax*x/(km+x))
+line
+
+RSS = sum(residuals(line)^2)
+TSS = sum((y - mean(y))^2)
+R.square = 1 - (RSS/TSS)
+R.square
+```
+
+We repeat for Enzyme 2
+
+```{r}
+x2 = hw2table4$X.NADH...µM[1:9]
+y2 = hw2table4$Average.Velocity[1:9]
+
+enz2table = plot(hw2table4$X.NADH...µM., hw2table4$Average.Velocity, main = "Enzyme 2 Velocity vs. [NADH]", xlab = "[NADH] (µM)", ylab = "Average Velocity (Units)")
+lines(x2, fitted(line), lty = 2, col = "black", lwd = 1)
+line = nls(y2~vmax*x2/(km+x2))
+line
+
+RSS = sum(residuals(line)^2)
+TSS = sum((y - mean(y))^2)
+R.square = 1 - (RSS/TSS)
+R.square
+
+```
+
+
+5/7/20
+Today I'll work on the last and final worksheet from my STA 100 class. Next week, I plan to learn how to do Differential Expression Analysis.
+
+
+```{r}
+
+#we'll be using data built into R for cats
+library("MASS")
+head(cats)
+
+names(cats)
+#our column names are Sex, Bwt and Hwt
+
+#let's make a plot:
+plot(cats$Bwt,cats$Hwt,xlab = "Body Weight", ylab = "Heart Weight",main = "Relationship Between Body and Heart Weight")
+
+#NEXT, we NEED to remove Outliers!
+#to do so, we will take the following steps:
+#1: figure out quantiles
+  Q1Hwt = quantile(cats$Hwt,0.25)
+  Q3Hwt = quantile(cats$Hwt,0.75)
+  Q1Bwt = quantile(cats$Bwt,0.25)
+  Q3Bwt = quantile(cats$Bwt,0.75)
+  
+#2: determine the bounds of our quantiles
+  lowerboundHwt = Q1 - 1.5*(Q3Hwt-Q1Hwt)
+  upperboundHwt = Q3 + 1.5*(Q3Hwt-Q1Hwt)
+  lowerboundBwt = Q1 - 1.5*(Q3Bwt-Q1Bwt)
+  upperboundBwt = Q3 + 1.5*(Q3Bwt-Q1Bwt)
+  
+#3: kick out the outliers
+  outliersHwt = which(cats$Hwt > upperboundHwt | cats$Hwt < lowerboundHwt)
+  outliersBwt = which(cats$Bwt > upperboundBwt | cats$Bwt < lowerboundBwt)
+  
+  data.no.outliers = cats[-c(outliersHwt,outliersBwt),]
+  data.no.outliers
+  
+  
+#let's try plotting again:
+  plot(data.no.outliers$Bwt, data.no.outliers$Hwt, xlab = "Body Weight", ylab = "Heart Weight",main = "Relationship Between Body and Heart Weight")
+  
+#to plot the regression line:
+  #use function lm, which means "linear model"
+  lin.model = lm(Hwt ~ Bwt,data = data.no.outliers)
+  the.betas = lin.model$coefficients
+  s.e = summary(lin.model)$sigma
+  r.2 =summary(lin.model)$r.squared 
+```
+
+
+
